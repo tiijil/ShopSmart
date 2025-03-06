@@ -171,7 +171,7 @@ export default function ProductPicker() {
                 variant.id === variantId 
                   ? { 
                       ...variant, 
-                      discount: sanitizedValue ? { value: sanitizedValue, type } : undefined 
+                      discount: sanitizedValue || type ? { value: sanitizedValue || "", type } : undefined 
                     } 
                   : variant
               ),

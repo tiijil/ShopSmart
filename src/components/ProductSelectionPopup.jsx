@@ -345,12 +345,10 @@ export function ProductSelectionPopup({
 
   // Memoize the selected count calculation to avoid recalculating on every render
   const selectedCount = useMemo(() => {
-    return products.reduce((count, product) => {
-      if (product.selected) {
-        return count + product.variants.filter((variant) => variant.selected).length
-      }
-      return count
-    }, 0)
+    // Count products that are either directly selected or have at least one selected variant
+    return products.filter(product => 
+      product.selected || product.variants.some(variant => variant.selected)
+    ).length;
   }, [products])
 
   const toggleProductSelection = useCallback((productId) => {
@@ -363,7 +361,8 @@ export function ProductSelectionPopup({
             selected: newSelected,
             variants: product.variants.map((variant) => ({
               ...variant,
-              selected: newSelected ? variant.selected : false,
+              // When product is selected, select ALL its variants
+              selected: newSelected,
             })),
           }
         }
@@ -376,19 +375,24 @@ export function ProductSelectionPopup({
     setProducts(
       products.map((product) => {
         if (product.id === productId) {
+          const isVariantCurrentlySelected = product.variants.find(v => v.id === variantId)?.selected;
+          const newVariantSelected = !isVariantCurrentlySelected;
+          
           const updatedVariants = product.variants.map((variant) => {
+            // Only update the clicked variant, leave others unchanged
             if (variant.id === variantId) {
-              return { ...variant, selected: !variant.selected }
+              return { ...variant, selected: newVariantSelected }
             }
             return variant
           })
 
-          // If any variant is selected, the product should be selected too
+          // Check if any variant is selected
           const anyVariantSelected = updatedVariants.some((v) => v.selected)
 
           return {
             ...product,
-            selected: anyVariantSelected,
+            // If any variant is selected, the product should also be selected
+            selected: anyVariantSelected ? true : product.selected,
             variants: updatedVariants,
           }
         }
@@ -462,10 +466,8 @@ export function ProductSelectionPopup({
           {product.variants.map((variant, variantIndex) => (
             <div key={variant.id}>
               <div
-                className={`py-3 px-3 flex items-center justify-between rounded-md transition-colors ${
-                  product.selected ? "hover:bg-gray-50 cursor-pointer" : "opacity-70"
-                }`}
-                onClick={() => product.selected && toggleVariantSelection(product.id, variant.id)}
+                className={`py-3 px-3 flex items-center justify-between rounded-md transition-colors hover:bg-gray-50 cursor-pointer`}
+                onClick={() => toggleVariantSelection(product.id, variant.id)}
               >
                 <div className="flex items-center">
                   <div
