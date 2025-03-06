@@ -202,20 +202,53 @@ export default function ProductPicker() {
 
   const handleProductSelect = (selectedProducts) => {
     if (editingProductId) {
-      // Update existing product
-      const newProducts = products.map((product) => {
-        if (product.id === editingProductId) {
-          const selectedProduct = selectedProducts[0];
-          return { 
-            ...selectedProduct, 
-            id: product.id,
-            discount: product.discount,
-            showVariants: product.showVariants || false
+      // If multiple products are selected while editing
+      if (selectedProducts.length > 1) {
+        // Find the index of the product being edited
+        const editingIndex = products.findIndex(p => p.id === editingProductId);
+        
+        if (editingIndex !== -1) {
+          // Create a copy of the products array
+          const newProducts = [...products];
+          
+          // First selected product replaces the one being edited
+          const firstProduct = selectedProducts[0];
+          newProducts[editingIndex] = {
+            ...firstProduct,
+            id: editingProductId,
+            discount: products[editingIndex].discount,
+            showVariants: products[editingIndex].showVariants || false
           };
+          
+          // Create new products for the additional selections
+          const additionalProducts = selectedProducts.slice(1).map(product => ({
+            ...product,
+            id: uuidv4(),
+            showVariants: false,
+            discount: undefined
+          }));
+          
+          // Insert additional products right after the edited product
+          newProducts.splice(editingIndex + 1, 0, ...additionalProducts);
+          
+          setProducts(newProducts);
         }
-        return product;
-      });
-      setProducts(newProducts);
+      } else if (selectedProducts.length === 1) {
+        // Update just the one product (original behavior)
+        const newProducts = products.map((product) => {
+          if (product.id === editingProductId) {
+            const selectedProduct = selectedProducts[0];
+            return { 
+              ...selectedProduct, 
+              id: product.id,
+              discount: product.discount,
+              showVariants: product.showVariants || false
+            };
+          }
+          return product;
+        });
+        setProducts(newProducts);
+      }
     } else if (selectedProducts.length > 0) {
       // Add all selected products
       const newProductsToAdd = selectedProducts.map(product => ({
@@ -225,7 +258,12 @@ export default function ProductPicker() {
         discount: undefined
       }));
       
-      setProducts([...products, ...newProductsToAdd]);
+      // Remove the initial placeholder product if it's the only one and has the default name
+      if (products.length === 1 && products[0].name === "Select Product") {
+        setProducts(newProductsToAdd);
+      } else {
+        setProducts([...products, ...newProductsToAdd]);
+      }
     }
     setIsProductPopupOpen(false);
     setEditingProductId(null);
@@ -267,7 +305,9 @@ export default function ProductPicker() {
         style={{ boxShadow: '0 4px 10px rgba(2, 1, 18, 0.15)' }}
       >
         <div className="space-y-4 mx-auto w-[95%]">
-          <h2 className="text-lg font-medium pl-14">Add Products</h2>
+          <div className="flex justify-between items-center">
+            <h2 className="text-lg font-medium pl-14">Add Products</h2>
+          </div>
 
           {error && (
             <motion.div 
@@ -381,12 +421,12 @@ export default function ProductPicker() {
                     >
                       {product.showVariants ? (
                         <>
-                          Hide variants
+                          <span className="underline">Hide variants</span>
                           <ChevronUp className="h-4 w-4" />
                         </>
                       ) : (
                         <>
-                          Show variants
+                          <span className="underline">Show variants</span>
                           <ChevronDown className="h-4 w-4" />
                         </>
                       )}
