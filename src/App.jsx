@@ -224,22 +224,13 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Navigation with pencil line effect */}
-      <nav className="bg-white shadow-sm py-4 sticky top-0 z-40">
+      <nav className="bg-gray-900 shadow-sm py-4 sticky top-0 z-40">
         <div className="container mx-auto px-4 flex justify-between items-center">
-            <div className="flex items-center pl-20 md:pl-32 lg:pl-48">
+            <div className="flex items-center pl-10 md:pl-16 lg:pl-24">
               <span className="text-xl font-bold flex items-center">
-                <span className="text-gray-900 font-semibold tracking-tight">Shop</span>
-                <span className="text-emerald-500 font-semibold tracking-tight">Smart</span>
+                <span className="text-gray-100 font-semibold tracking-tight">Shop</span>
+                <span className="text-emerald-400 font-semibold tracking-tight">Smart</span>
               </span>
-            </div>
-            
-            <div className="hidden md:flex items-center">
-              <button 
-                className="text-gray-600 hover:text-emerald-600 transition-colors relative group"
-              >
-                Products
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-emerald-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100%25\' height=\'100%25\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M1,1 L11,5 L1,9\' stroke=\'%2310B981\' stroke-width=\'2\' fill=\'none\' stroke-linecap=\'round\' stroke-dasharray=\'1, 7\' /%3E%3C/svg%3E")', backgroundSize: '12px 100%' }}></span>
-              </button>
             </div>
         </div>
       </nav>
