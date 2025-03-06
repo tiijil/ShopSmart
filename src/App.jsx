@@ -351,8 +351,9 @@ function App() {
                     <motion.h1 
                       className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 text-gray-900 tracking-tight"
                       variants={itemVariants}
+                      style={{ lineHeight: 1.2 }}
                     >
-                      <div className="mb-4 leading-tight">
+                      <div className="mb-6" style={{ marginBottom: "1.5rem" }}>
                         <span className="relative inline-block">
                           Manage Your
                           <motion.div 
@@ -363,7 +364,7 @@ function App() {
                           ></motion.div>
                         </span>
                       </div>
-                      <div className="leading-tight text-emerald-700">
+                      <div className="leading-tight text-emerald-700" style={{ marginTop: "0.5rem" }}>
                         <span className="relative inline-block">
                           Products With Ease
                           <motion.div 
@@ -924,7 +925,7 @@ function App() {
                         "
                       </div>
                       
-                      <div className="flex items-center mb-10">
+                      <div className="flex items-center mb-10" style={{ marginBottom: "2.5rem" }}>
                         <div className="flex text-amber-400">
                           {[...Array(testimonial.stars)].map((_, i) => (
                             <svg key={i} className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -934,17 +935,17 @@ function App() {
                         </div>
                       </div>
                       
-                      <p className="text-gray-600 mb-16 italic relative z-10 text-lg leading-loose">"{testimonial.quote}"</p>
+                      <p className="text-gray-600 mb-16 italic relative z-10 text-lg leading-loose" style={{ marginBottom: "4rem", lineHeight: "1.8" }}>"{testimonial.quote}"</p>
                       
-                      <div className="flex items-center mt-8">
+                      <div className="flex items-center mt-8" style={{ marginTop: "2rem" }}>
                         <div className={`w-14 h-14 bg-${testimonial.color}-100 rounded-full flex items-center justify-center text-${testimonial.color}-700 font-medium mr-6`}>
                           {testimonial.initials}
                         </div>
                         <div>
-                          <h4 className="font-medium text-gray-900 text-lg mb-3">
+                          <h4 className="font-medium text-gray-900 text-lg mb-3" style={{ marginBottom: "0.75rem" }}>
                             {testimonial.name}
                           </h4>
-                          <p className="text-sm text-gray-500 mt-2">
+                          <p className="text-sm text-gray-500 mt-2" style={{ marginTop: "0.5rem" }}>
                             {testimonial.role}
                           </p>
                         </div>
@@ -956,6 +957,7 @@ function App() {
                 {/* Testimonial metrics */}
                 <motion.div 
                   className="mt-40 grid grid-cols-1 md:grid-cols-4 gap-16"
+                  style={{ marginTop: "10rem", gap: "4rem" }}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
@@ -970,12 +972,13 @@ function App() {
                     <motion.div 
                       key={index}
                       className="bg-white rounded-xl p-12 text-center border border-gray-100 shadow-sm"
+                      style={{ padding: "3rem" }}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 * index + 0.3, duration: 0.5 }}
                       viewport={{ once: true }}
                     >
-                      <div className="text-4xl font-bold text-gray-900 mb-6">{stat.value}</div>
+                      <div className="text-4xl font-bold text-gray-900 mb-6" style={{ marginBottom: "1.5rem" }}>{stat.value}</div>
                       <div className="text-gray-500 font-medium text-lg">{stat.label}</div>
                     </motion.div>
                   ))}
