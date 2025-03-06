@@ -320,7 +320,7 @@ function App() {
             <section 
               id="home" 
               ref={heroRef}
-              className="relative min-h-[90vh] flex items-center pt-0 overflow-hidden"
+              className="relative min-h-[90vh] flex items-center pt-12 pb-20 overflow-hidden"
             >
               {/* Background gradient elements */}
               <div className="absolute inset-0 overflow-hidden">
@@ -329,11 +329,11 @@ function App() {
                 <div className="absolute -bottom-40 right-1/3 w-80 h-80 bg-emerald-50 rounded-full opacity-30 blur-3xl"></div>
               </div>
               
-              <div className="container mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="container mx-auto px-8 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                   {/* Left Column - Text Content with staggered animations */}
                   <motion.div 
-                    className="order-2 md:order-1"
+                    className="order-2 md:order-1 py-8"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -341,31 +341,43 @@ function App() {
                     style={{ y: heroTextY }}
                   >
                     <motion.div 
-                      className="inline-flex items-center bg-emerald-50 text-emerald-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6 border border-emerald-100 shadow-sm"
+                      className="inline-flex items-center bg-emerald-50 text-emerald-700 px-5 py-2 rounded-full text-sm font-medium mb-8 border border-emerald-100 shadow-sm"
                       variants={itemVariants}
                     >
-                      <span className="bg-emerald-500 w-2 h-2 rounded-full mr-2"></span>
+                      <span className="bg-emerald-500 w-2 h-2 rounded-full mr-3"></span>
                       Simplified E-commerce Management
                     </motion.div>
                     
                     <motion.h1 
-                      className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-gray-900 tracking-tight leading-relaxed"
+                      className="text-4xl md:text-5xl lg:text-6xl font-bold mb-10 text-gray-900 tracking-tight"
                       variants={itemVariants}
                     >
-                      <div className="mb-6">Manage Your <span className="relative inline-block">
-                        E-commerce
-                        <motion.div 
-                          className="absolute -bottom-2 left-0 right-0 h-3 bg-emerald-200 opacity-50 rounded-lg -z-10"
-                          initial={{ width: 0 }}
-                          animate={{ width: "100%" }}
-                          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-                        ></motion.div>
-                      </span></div>
-                      <div className="mt-2">Products With Ease</div>
+                      <div className="mb-4 leading-tight">
+                        <span className="relative inline-block">
+                          Manage Your
+                          <motion.div 
+                            className="absolute -bottom-2 left-0 right-0 h-3 bg-emerald-100 opacity-30 rounded-lg -z-10"
+                            initial={{ width: 0 }}
+                            animate={{ width: "100%" }}
+                            transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                          ></motion.div>
+                        </span>
+                      </div>
+                      <div className="leading-tight text-emerald-700">
+                        <span className="relative inline-block">
+                          Products With Ease
+                          <motion.div 
+                            className="absolute -bottom-2 left-0 right-0 h-3 bg-emerald-200 opacity-40 rounded-lg -z-10"
+                            initial={{ width: 0 }}
+                            animate={{ width: "100%" }}
+                            transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+                          ></motion.div>
+                        </span>
+                      </div>
                     </motion.h1>
                     
                     <motion.p 
-                      className="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed"
+                      className="text-lg text-gray-600 mb-12 max-w-lg leading-relaxed"
                       variants={itemVariants}
                     >
                       A powerful, intuitive dashboard for streamlining your product catalog. Save time, reduce errors, and boost your sales with our smart management tools. Our AI-powered platform helps you optimize pricing, inventory, and product descriptions.
@@ -539,7 +551,7 @@ function App() {
             {/* Features Section with scroll-triggered animations */}
             <section 
               id="features"
-              className="py-24 bg-gray-50 relative overflow-hidden"
+              className="py-32 bg-gray-50 relative overflow-hidden"
               ref={featuresRef}
             >
               {/* Background elements */}
@@ -548,30 +560,30 @@ function App() {
                 <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-50 rounded-full opacity-40 blur-3xl"></div>
               </div>
               
-              <div className="container mx-auto px-6 relative z-10">
+              <div className="container mx-auto px-8 relative z-10">
                 <motion.div 
-                  className="text-center mb-20"
+                  className="text-center mb-24"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true, amount: 0.3 }}
                 >
                   <motion.div 
-                    className="inline-flex items-center bg-emerald-50 text-emerald-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6 border border-emerald-100 shadow-sm"
+                    className="inline-flex items-center bg-emerald-50 text-emerald-700 px-5 py-2 rounded-full text-sm font-medium mb-8 border border-emerald-100 shadow-sm"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     transition={{ type: "spring", stiffness: 200 }}
                     viewport={{ once: true }}
                   >
                     <motion.span 
-                      className="bg-emerald-500 w-2 h-2 rounded-full mr-2"
+                      className="bg-emerald-500 w-2 h-2 rounded-full mr-3"
                       animate={{ scale: [1, 1.5, 1] }}
                       transition={{ repeat: Infinity, duration: 2 }}
                     ></motion.span>
                     Powerful Features
                   </motion.div>
                   <motion.h2 
-                    className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900 tracking-tight"
+                    className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-gray-900 tracking-tight"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
@@ -580,7 +592,7 @@ function App() {
                     Everything you need to <span className="text-emerald-600">succeed</span>
                   </motion.h2>
                   <motion.p 
-                    className="text-gray-600 max-w-2xl mx-auto text-lg"
+                    className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
@@ -592,7 +604,7 @@ function App() {
                 </motion.div>
                 
                 <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
+                  className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24"
                   variants={staggerContainer}
                   initial="hidden"
                   whileInView="visible"
@@ -643,7 +655,7 @@ function App() {
                   ].map((feature, index) => (
                     <motion.div 
                       key={index}
-                      className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 relative overflow-hidden group"
+                      className="bg-white rounded-2xl p-10 shadow-lg border border-gray-100 relative overflow-hidden group"
                       variants={fadeInUp}
                       whileHover={{ 
                         y: -10,
@@ -651,21 +663,34 @@ function App() {
                         transition: { duration: 0.3 }
                       }}
                     >
-                      <div className={`absolute right-0 top-0 w-24 h-24 rounded-bl-full bg-${feature.color}-50 opacity-50 transition-all duration-300 group-hover:bg-${feature.color}-100`}></div>
-                      <div className={`w-14 h-14 rounded-xl bg-${feature.color}-50 text-${feature.color}-600 flex items-center justify-center mb-6`}>
+                      {/* Decorative element */}
+                      <div className={`absolute top-0 right-0 w-32 h-32 bg-${feature.color}-50 rounded-bl-full opacity-30 -mr-10 -mt-10`}></div>
+                      
+                      <div className={`w-16 h-16 bg-${feature.color}-100 text-${feature.color}-600 rounded-2xl flex items-center justify-center mb-8`}>
                         {feature.icon}
                       </div>
-                      <h3 className="text-xl font-bold mb-3 text-gray-900">{feature.title}</h3>
-                      <p className="text-gray-600">{feature.description}</p>
-                      <div className="mt-6 pt-6 border-t border-gray-100">
-                        <a href="#" className={`text-${feature.color}-600 font-medium flex items-center group-hover:underline`}>
-                          Learn more
-                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 transition-transform group-hover:translate-x-1">
-                            <path d="M5 12h14"></path>
-                            <path d="m12 5 7 7-7 7"></path>
-                          </svg>
-                        </a>
-                      </div>
+                      
+                      <h3 className="text-xl font-bold text-gray-900 mb-5">{feature.title}</h3>
+                      <p className="text-gray-600 leading-relaxed mb-6">{feature.description}</p>
+                      
+                      <a href="#" className={`inline-flex items-center text-${feature.color}-600 font-medium group`}>
+                        <span className="mr-2">Learn more</span>
+                        <svg 
+                          xmlns="http://www.w3.org/2000/svg" 
+                          width="16" 
+                          height="16" 
+                          viewBox="0 0 24 24" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                          className="transition-transform group-hover:translate-x-1"
+                        >
+                          <path d="M5 12h14"></path>
+                          <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                      </a>
                     </motion.div>
                   ))}
                 </motion.div>
@@ -958,24 +983,16 @@ function App() {
               </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="py-24 bg-gradient-to-br from-emerald-600 to-emerald-800 relative overflow-hidden">
-              {/* Background decorative elements */}
+            {/* CTA Section with gradient background */}
+            <section className="py-32 relative overflow-hidden bg-gradient-to-br from-emerald-600 to-emerald-800">
+              {/* Background elements */}
               <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply opacity-20 blur-3xl"></div>
-                <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply opacity-20 blur-3xl"></div>
-                
-                {/* Decorative grid pattern */}
-                <div className="absolute inset-0 opacity-10">
-                  <div className="h-full w-full grid grid-cols-12 gap-2">
-                    {[...Array(12)].map((_, i) => (
-                      <div key={i} className="border-r border-t border-white/10"></div>
-                    ))}
-                  </div>
-                </div>
+                <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid-pattern.svg')] opacity-10"></div>
+                <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-500 rounded-full opacity-20 blur-3xl"></div>
+                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald-400 rounded-full opacity-20 blur-3xl"></div>
               </div>
               
-              <div className="container mx-auto px-6 relative z-10">
+              <div className="container mx-auto px-8 relative z-10">
                 <motion.div 
                   className="max-w-4xl mx-auto text-center"
                   initial={{ opacity: 0, y: 30 }}
@@ -988,11 +1005,12 @@ function App() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.2, duration: 0.5 }}
                     viewport={{ once: true }}
-                    className="inline-flex items-center bg-white/10 text-emerald-50 px-4 py-1.5 rounded-full text-sm font-medium mb-8 backdrop-blur-sm border border-white/20"
+                    className="inline-flex items-center bg-white/10 text-emerald-50 px-5 py-2 rounded-full text-sm font-medium mb-8 backdrop-blur-sm border border-white/20"
                   >
-                    <span className="bg-emerald-50 w-2 h-2 rounded-full mr-2"></span>
+                    <span className="bg-emerald-50 w-2 h-2 rounded-full mr-3"></span>
                     Limited Time Offer
                   </motion.div>
+                  
                   
                   <motion.h2 
                     className="text-3xl md:text-5xl font-bold mb-8 text-white leading-tight"
@@ -1005,7 +1023,7 @@ function App() {
                   </motion.h2>
                   
                   <motion.p
-                    className="text-xl text-emerald-50 opacity-90 mb-10 leading-relaxed"
+                    className="text-xl text-emerald-50 opacity-90 mb-12 leading-relaxed"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.6 }}
@@ -1015,7 +1033,7 @@ function App() {
                   </motion.p>
                   
                   <motion.div
-                    className="flex flex-col sm:flex-row gap-4 justify-center"
+                    className="flex flex-col sm:flex-row gap-6 justify-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.6 }}
@@ -1023,16 +1041,16 @@ function App() {
                   >
                     <a 
                       href="#" 
-                      className="bg-white text-emerald-700 hover:bg-emerald-50 px-8 py-4 rounded-lg font-medium shadow-lg shadow-emerald-900/20 transition-all duration-300 group"
+                      className="bg-white text-emerald-700 hover:bg-emerald-50 px-10 py-5 rounded-lg font-medium shadow-lg shadow-emerald-900/20 transition-all duration-300 group flex items-center justify-center"
                     >
-                      <span>Get Started Free</span>
-                      <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <span className="mr-2">Get Started Free</span>
+                      <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                       </svg>
                     </a>
                     <a 
                       href="#" 
-                      className="border border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-lg font-medium backdrop-blur-sm transition-all duration-300"
+                      className="border border-white/30 text-white hover:bg-white/10 px-10 py-5 rounded-lg font-medium backdrop-blur-sm transition-all duration-300"
                     >
                       Contact Sales
                     </a>
