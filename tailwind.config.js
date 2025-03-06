@@ -1,0 +1,62 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: "white",
+        foreground: "#1f2937",
+        primary: "#00694A",
+        "primary-foreground": "white",
+        secondary: "#f3f4f6",
+        "secondary-foreground": "#1f2937",
+        destructive: "#ef4444",
+        "destructive-foreground": "white",
+        muted: "#f3f4f6",
+        "muted-foreground": "#6b7280",
+        accent: "#f3f4f6",
+        "accent-foreground": "#1f2937",
+        border: "#e5e7eb",
+        input: "#e5e7eb",
+        ring: "#00694A",
+        emerald: {
+          50: "#ecfdf5",
+          100: "#d1fae5",
+          200: "#a7f3d0",
+          300: "#6ee7b7",
+          400: "#34d399",
+          500: "#10b981",
+          600: "#00694A",
+          700: "#047857",
+          800: "#065f46",
+          900: "#064e3b",
+        },
+        blue: {
+          600: "#2563eb",
+          700: "#1d4ed8",
+        },
+        gray: {
+          50: "#f9fafb",
+          100: "#f3f4f6",
+          200: "#e5e7eb",
+          300: "#d1d5db",
+          400: "#9ca3af",
+          500: "#6b7280",
+          600: "#4b5563",
+          700: "#374151",
+          800: "#1f2937",
+        },
+        red: {
+          50: "#fef2f2",
+          200: "#fecaca",
+          500: "#ef4444",
+          700: "#b91c1c",
+        },
+      },
+    },
+  },
+  plugins: [],
+} 
