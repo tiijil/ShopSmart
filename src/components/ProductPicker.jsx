@@ -151,7 +151,25 @@ export default function ProductPicker() {
     }
     
     setProducts(
-      products.map((product) => (product.id === productId ? { ...product, discount: { value: sanitizedValue, type } } : product)),
+      products.map((product) => {
+        if (product.id === productId) {
+          // Create the discount object
+          const discountObj = { value: sanitizedValue, type };
+          
+          // Apply the same discount to all variants
+          const updatedVariants = product.variants?.map(variant => ({
+            ...variant,
+            discount: discountObj
+          }));
+          
+          return { 
+            ...product, 
+            discount: discountObj,
+            variants: updatedVariants
+          };
+        }
+        return product;
+      }),
     )
   }
 
@@ -182,7 +200,22 @@ export default function ProductPicker() {
   }
 
   const removeDiscount = (productId) => {
-    setProducts(products.map((product) => (product.id === productId ? { ...product, discount: undefined } : product)))
+    setProducts(products.map((product) => {
+      if (product.id === productId) {
+        // Remove discount from product and all its variants
+        const updatedVariants = product.variants?.map(variant => ({
+          ...variant,
+          discount: undefined
+        }));
+        
+        return { 
+          ...product, 
+          discount: undefined,
+          variants: updatedVariants
+        };
+      }
+      return product;
+    }))
   }
 
   const removeVariantDiscount = (productId, variantId) => {
